@@ -1,0 +1,27 @@
+int findMinDiff(vector<int>& chocolates, int N, int M) {
+    // If there are no students or chocolates, return 0
+    if (M == 0 || N == 0) {
+        return 0;
+    }
+
+    // Number of students cannot be more than number of packets
+    if (N < M) {
+        return -1;
+    }
+
+    // Sort the array
+    sort(chocolates.begin(), chocolates.end());
+
+    // Initialize the minimum difference to a large value
+    int minDiff = INT_MAX;
+
+    // Find the minimum difference by comparing differences in windows of size M
+    for (int i = 0; i <= N - M; i++) {
+        int diff = chocolates[i + M - 1] - chocolates[i];
+        if (diff < minDiff) {
+            minDiff = diff;
+        }
+    }
+
+    return minDiff;
+}
