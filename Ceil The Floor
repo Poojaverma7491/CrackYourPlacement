@@ -1,0 +1,20 @@
+class Solution {
+  public:
+    vector<int> getFloorAndCeil(int x, vector<int> &arr) {
+        int floor = INT_MIN;
+        int ceil = INT_MAX;
+        
+        for (int num : arr) {
+            if (num <= x && num > floor) {
+                floor = num;
+            }
+            if (num >= x && num < ceil) {
+                ceil = num;
+            }
+        }
+        if (floor == INT_MIN) floor = -1;
+        if (ceil == INT_MAX) ceil = -1;
+    
+        return {floor, ceil};
+    }
+};
